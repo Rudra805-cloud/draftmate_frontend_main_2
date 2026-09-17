@@ -323,7 +323,7 @@ const DocumentManagement = () => {
     
     const domain = (typeof window !== 'undefined' && window.location.origin)
       ? window.location.origin 
-      : (import.meta.env.VITE_PUBLIC_APP_URL || 'https://app.draftmate.in');
+      : (import.meta.env.VITE_PUBLIC_APP_URL || 'https://www.draftmate.in');
       
     const cleanDomain = domain.endsWith('/') ? domain.slice(0, -1) : domain;
     

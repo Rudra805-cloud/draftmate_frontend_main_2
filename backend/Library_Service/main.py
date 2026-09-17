@@ -40,12 +40,10 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 # CORS Setup
 ALLOWED_ORIGINS = [
     "*",
-    "https://app.draftmate.in",
-    "http://app.draftmate.in",
     "https://draftmate.in",
     "http://draftmate.in",
-    "https://www.draftmate.in",
-    os.getenv("FRONTEND_URL_PROD", "https://app.draftmate.in"),
+    "https://draftmate.in",
+    os.getenv("FRONTEND_URL_PROD", "https://draftmate.in"),
     os.getenv("FRONTEND_URL_DEV", "http://localhost:5173"),
 ]
 

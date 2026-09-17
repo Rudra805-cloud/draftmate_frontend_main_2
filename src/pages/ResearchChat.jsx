@@ -242,7 +242,7 @@ const ResearchChat = () => {
 
     const handleShareEmail = (text) => {
         const subject = encodeURIComponent('Legal Research from DraftMate AI');
-        const body = encodeURIComponent(text.substring(0, 1500) + '\n\n— Shared via DraftMate AI Research (app.draftmate.in)');
+        const body = encodeURIComponent(text.substring(0, 1500) + '\n\n— Shared via DraftMate AI Research (www.draftmate.in)');
         window.open(`mailto:?subject=${subject}&body=${body}`, '_self');
         setShareOpenId(null);
     };

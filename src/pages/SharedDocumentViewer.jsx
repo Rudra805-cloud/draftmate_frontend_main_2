@@ -209,7 +209,7 @@ export default function SharedDocumentViewer() {
         {/* Footer */}
         <div style={{ textAlign: 'center', color: '#334155', fontSize: 12, fontWeight: 500 }}>
           This document was shared via{' '}
-          <a href="https://app.draftmate.in" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: 700 }}>
+          <a href="https://draftmate.in" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: 700 }}>
             DraftMate Legal Platform
           </a>
           {' '}— AI-powered legal drafting for Indian lawyers.
