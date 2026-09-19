@@ -3,10 +3,10 @@ import ScrollReveal from "@/components/landing/ScrollReveal";
 import { Link } from "react-router-dom";
 
 const LINKS = {
-  Product:   ["Features", "Pricing", "How It Works", "Changelog", "Lex Bot"],
-  Legal:     ["Privacy Policy", "Terms of Service", "DPDPA Compliance", "Refund Policy", "Cookie Policy"],
+  Product: ["Features", "Pricing", "How It Works", "Changelog", "Lex Bot"],
+  Legal: ["Privacy Policy", "Terms of Service", "DPDPA Compliance", "Refund Policy", "Cookie Policy"],
   Community: ["LawJurist", "Blog", "Case Studies", "Webinars", "Advocate Network"],
-  Company:   ["About Us", "Careers", "Press Kit", "Contact", "Partner with Us"],
+  Company: ["About Us", "Careers", "Press Kit", "Contact", "Partner with Us"],
 };
 
 export default function Footer() {
@@ -25,14 +25,14 @@ export default function Footer() {
 
             {/* Brand & Info */}
             <div className="lg:col-span-2 flex flex-col gap-6">
-              
+
               {/* Logo Area */}
               <div className="flex items-center gap-3">
                 <div className="relative w-11 h-11">
                   <img
                     src="/logo.png"
                     alt="Draftmate.in"
-                    className="w-[44px] h-[44px] object-contain" 
+                    className="w-[44px] h-[44px] object-contain"
                   />
                 </div>
                 <div>
@@ -48,9 +48,9 @@ export default function Footer() {
 
               {/* Contact Info */}
               <div className="space-y-3 mt-2">
-                <a href="mailto:draftmate25@gmail.com" className="flex items-center gap-3 text-[#CBD5E1] hover:text-white transition-colors text-[14.5px]">
+                <a href="mailto:info@draftmate.in" className="flex items-center gap-3 text-[#CBD5E1] hover:text-white transition-colors text-[14.5px]">
                   <Mail className="w-4 h-4 text-[#94A3B8]" />
-                  draftmate25@gmail.com
+                  info@draftmate.in
                 </a>
                 <a href="tel:+916360756930" className="flex items-center gap-3 text-[#CBD5E1] hover:text-white transition-colors text-[14.5px]">
                   <Phone className="w-4 h-4 text-[#94A3B8]" />
@@ -61,11 +61,11 @@ export default function Footer() {
               {/* Registration Info */}
               <div className="space-y-2 mt-2">
                 <div className="text-[#CBD5E1] text-[14px]">
-                  <span className="text-[#94A3B8] font-semibold mr-2">CIN:</span> 
+                  <span className="text-[#94A3B8] font-semibold mr-2">CIN:</span>
                   U62090BR2026PTC082255
                 </div>
                 <div className="text-[#CBD5E1] text-[14px]">
-                  <span className="text-[#94A3B8] font-semibold mr-2">PAN:</span> 
+                  <span className="text-[#94A3B8] font-semibold mr-2">PAN:</span>
                   AAMCD4217D
                 </div>
               </div>
@@ -74,7 +74,7 @@ export default function Footer() {
               <div className="flex gap-4 mt-2 items-center">
                 <a href="#" className="text-[#94A3B8] hover:text-white transition-colors">
                   <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </a>
                 <a href="#" className="text-[#94A3B8] hover:text-white transition-colors">
@@ -96,8 +96,8 @@ export default function Footer() {
                 <div className="text-[12px] text-[#94A3B8] mb-2 font-medium">Registered with</div>
                 <div className="relative w-[140px] h-[45px] bg-white rounded flex items-center justify-center p-1.5">
                   <img
-                    src="/startup_india_logo.png" 
-                    alt="DPIIT Startup India" 
+                    src="/startup_india_logo.png"
+                    alt="DPIIT Startup India"
                     className="w-50 h-50 object-contain p-1"
                   />
                 </div>
@@ -186,9 +186,9 @@ export default function Footer() {
                 if (l === "Terms") bottomRoute = "/terms";
 
                 return (
-                  <Link 
-                    key={l} 
-                    to={bottomRoute} 
+                  <Link
+                    key={l}
+                    to={bottomRoute}
                     className="text-[12px] transition-colors duration-200"
                     style={{ color: "rgba(255, 255, 255, 0.9)" }}
                     onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}

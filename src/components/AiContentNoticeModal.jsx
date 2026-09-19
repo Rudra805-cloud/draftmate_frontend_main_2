@@ -14,7 +14,7 @@ const AiContentNoticeModal = ({ isOpen, onAccept }) => {
 
   const handleConfirm = async () => {
     if (!isFormValid) return;
-    
+
     setIsSubmitting(true);
     const consentVal = 'yes';
     try {
@@ -34,7 +34,7 @@ const AiContentNoticeModal = ({ isOpen, onAccept }) => {
         const profile = JSON.parse(localStorage.getItem('user_profile') || '{}');
         profile.ai_consent = consentVal;
         localStorage.setItem('user_profile', JSON.stringify(profile));
-      } catch (e) {}
+      } catch (e) { }
 
       // 2. Persist in PostgreSQL users table via auth service
       const sessionId = localStorage.getItem('session_id') || localStorage.getItem('token');
@@ -72,7 +72,7 @@ const AiContentNoticeModal = ({ isOpen, onAccept }) => {
 
   return (
     <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-slate-900/70 backdrop-blur-sm p-4 sm:p-6 animate-in fade-in duration-200">
-      <div 
+      <div
         className="relative w-full max-w-md rounded-2xl bg-white shadow-[0_20px_60px_rgba(15,23,42,0.25)] border border-slate-100 overflow-hidden flex flex-col my-auto p-6 sm:p-8 space-y-6"
         onClick={(e) => e.stopPropagation()}
       >
@@ -113,11 +113,11 @@ const AiContentNoticeModal = ({ isOpen, onAccept }) => {
             />
             <span className="text-xs sm:text-sm text-slate-700 font-medium group-hover:text-slate-900 transition-colors">
               I agree to the{' '}
-              <a 
-                href="/terms" 
-                target="_blank" 
+              <a
+                href="/terms"
+                target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()} 
+                onClick={(e) => e.stopPropagation()}
                 className="font-bold text-slate-800 hover:text-blue-600 underline"
               >
                 Terms of Service
@@ -136,11 +136,11 @@ const AiContentNoticeModal = ({ isOpen, onAccept }) => {
             />
             <span className="text-xs sm:text-sm text-slate-700 font-medium group-hover:text-slate-900 transition-colors">
               I agree to the{' '}
-              <a 
-                href="/privacy-policy" 
-                target="_blank" 
+              <a
+                href="/privacy-policy"
+                target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()} 
+                onClick={(e) => e.stopPropagation()}
                 className="font-bold text-slate-800 hover:text-blue-600 underline"
               >
                 Privacy Policy
@@ -156,11 +156,10 @@ const AiContentNoticeModal = ({ isOpen, onAccept }) => {
             type="button"
             onClick={handleConfirm}
             disabled={!isFormValid || isSubmitting}
-            className={`w-full flex items-center justify-center gap-2 rounded-xl py-3 px-6 text-sm font-semibold transition-all shadow-sm ${
-              isFormValid
+            className={`w-full flex items-center justify-center gap-2 rounded-xl py-3 px-6 text-sm font-semibold transition-all shadow-sm ${isFormValid
                 ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20 active:scale-[0.99] cursor-pointer'
                 : 'bg-slate-200 text-slate-400 cursor-not-allowed border border-slate-300/60 shadow-none'
-            }`}
+              }`}
           >
             {isSubmitting ? (
               <>

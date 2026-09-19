@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { 
-  FileText, 
-  UserCheck, 
-  Key, 
-  CreditCard, 
-  FolderOpen, 
-  Cpu, 
-  ShieldAlert, 
-  Copyright, 
-  Scale, 
-  AlertTriangle, 
-  Briefcase, 
-  Lock, 
-  AlertOctagon, 
-  ShieldCheck, 
-  XOctagon, 
-  RefreshCcw, 
-  Landmark, 
-  Mail, 
-  Phone, 
+import {
+  FileText,
+  UserCheck,
+  Key,
+  CreditCard,
+  FolderOpen,
+  Cpu,
+  ShieldAlert,
+  Copyright,
+  Scale,
+  AlertTriangle,
+  Briefcase,
+  Lock,
+  AlertOctagon,
+  ShieldCheck,
+  XOctagon,
+  RefreshCcw,
+  Landmark,
+  Mail,
+  Phone,
   MapPin,
   Clock,
   ArrowRight
@@ -291,7 +291,7 @@ export default function TermsOfUse() {
   const scrollToSection = (id) => {
     setIsManualScroll(true);
     setActiveIdx(id);
-    
+
     const element = document.getElementById(id);
     if (element) {
       const offset = 100;
@@ -319,7 +319,7 @@ export default function TermsOfUse() {
         {/* ── HERO SECTION ── */}
         <section className="relative pt-32 pb-16 lg:pt-48 lg:pb-20 overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
-          
+
           <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -347,7 +347,7 @@ export default function TermsOfUse() {
         <section className="pb-24 relative z-10">
           <div className="w-full max-w-7xl mx-auto px-5 md:px-10">
             <div className="grid lg:grid-cols-[280px_1fr] gap-12 items-start">
-              
+
               {/* STICKY NAVIGATION */}
               <aside className="hidden lg:block sticky top-32 space-y-2 h-[calc(100vh-160px)] overflow-y-auto pr-2 pb-4 scrollbar-hide">
                 <div className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 px-4">Contents</div>
@@ -355,25 +355,23 @@ export default function TermsOfUse() {
                   <button
                     key={sec.id}
                     onClick={() => scrollToSection(sec.id)}
-                    className={`w-full text-left px-4 py-3 rounded-xl text-[14px] font-medium transition-all duration-300 border flex items-center justify-between group ${
-                      activeSection === sec.id 
-                        ? "bg-white border-blue-200 text-blue-600 shadow-sm" 
+                    className={`w-full text-left px-4 py-3 rounded-xl text-[14px] font-medium transition-all duration-300 border flex items-center justify-between group ${activeSection === sec.id
+                        ? "bg-white border-blue-200 text-blue-600 shadow-sm"
                         : "bg-transparent border-transparent text-slate-500 hover:text-slate-900"
-                    }`}
+                      }`}
                   >
                     <span className="truncate pr-2">{sec.title.split(". ")[1]}</span>
                     <ArrowRight className={`w-3.5 h-3.5 shrink-0 transition-transform ${activeSection === sec.id ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"}`} />
                   </button>
                 ))}
-                
+
                 {/* Contact Nav Item */}
                 <button
                   onClick={() => scrollToSection("contact")}
-                  className={`w-full text-left px-4 py-3 rounded-xl text-[14px] font-medium transition-all duration-300 border flex items-center justify-between group ${
-                    activeSection === "contact" 
-                      ? "bg-white border-blue-200 text-blue-600 shadow-sm" 
+                  className={`w-full text-left px-4 py-3 rounded-xl text-[14px] font-medium transition-all duration-300 border flex items-center justify-between group ${activeSection === "contact"
+                      ? "bg-white border-blue-200 text-blue-600 shadow-sm"
                       : "bg-transparent border-transparent text-slate-500 hover:text-slate-900"
-                  }`}
+                    }`}
                 >
                   Contact Information
                   <ArrowRight className={`w-3.5 h-3.5 transition-transform ${activeSection === "contact" ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"}`} />
@@ -384,21 +382,21 @@ export default function TermsOfUse() {
               <div className="space-y-8">
                 {SECTIONS.map((sec) => (
                   <ScrollReveal key={sec.id}>
-                    <div 
+                    <div
                       id={sec.id}
                       className="group p-8 md:p-10 rounded-[32px] bg-white border border-slate-200/80 shadow-sm transition-all duration-500 hover:shadow-xl hover:shadow-blue-900/5 hover:border-blue-200 scroll-mt-28"
                     >
                       <div className="flex flex-col md:flex-row gap-6">
-                        <div 
+                        <div
                           className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-110"
                           style={{ background: sec.fill }}
                         >
                           <sec.icon className="w-7 h-7" style={{ color: sec.color }} fill="white" />
                         </div>
-                        
+
                         <div className="flex-1 min-w-0">
                           <h2 className="text-2xl font-bold text-[#0F1C2E] mb-4">{sec.title}</h2>
-                          
+
                           <p className="text-slate-600 leading-relaxed mb-6 text-[16px] whitespace-pre-wrap break-words">
                             {sec.content}
                           </p>
@@ -428,48 +426,48 @@ export default function TermsOfUse() {
                 {/* SECTION 18 & 19: GRIEVANCE & CONTACT (Bottom Section) */}
                 <ScrollReveal>
                   <div id="contact" className="grid md:grid-cols-2 gap-6 pt-10 scroll-mt-28">
-                     {/* 18. Grievance Officer */}
-                     <div className="p-8 rounded-[32px] bg-[#0F1C2E] text-white overflow-hidden relative group">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl" />
-                        <h3 className="text-xl font-bold mb-6 relative z-10">18. Grievance Officer</h3>
-                        <p className="text-slate-300 text-sm mb-6 relative z-10">In accordance with applicable Indian laws, users may submit complaints or grievances to:</p>
-                        
-                        <div className="space-y-4 relative z-10">
-                          <div className="font-semibold text-white mb-2">DraftMate AI</div>
-                          <div className="flex items-center gap-4 text-slate-300">
-                             <Mail className="w-5 h-5 text-blue-400 shrink-0" />
-                             <span className="break-all">draftmate25@gmail.com</span>
-                          </div>
-                        </div>
-                        <p className="text-slate-300 text-sm mt-6 relative z-10">We aim to acknowledge complaints within a reasonable period and resolve them in accordance with applicable laws.</p>
-                     </div>
+                    {/* 18. Grievance Officer */}
+                    <div className="p-8 rounded-[32px] bg-[#0F1C2E] text-white overflow-hidden relative group">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl" />
+                      <h3 className="text-xl font-bold mb-6 relative z-10">18. Grievance Officer</h3>
+                      <p className="text-slate-300 text-sm mb-6 relative z-10">In accordance with applicable Indian laws, users may submit complaints or grievances to:</p>
 
-                     {/* 19. Contact Information */}
-                     <div className="p-8 rounded-[32px] bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-lg">
-                        <h3 className="text-xl font-bold mb-6">19. Contact Us</h3>
-                        <p className="text-blue-50 text-sm mb-6">For questions, support requests, legal notices, or grievances regarding these Terms, please contact:</p>
-                        
-                        <div className="space-y-4 mb-6">
-                          <div className="font-semibold text-white mb-2">DraftMate AI</div>
-                          <div className="flex items-center gap-4 text-blue-50">
-                             <Mail className="w-5 h-5 text-white shrink-0" />
-                             <span className="break-all">draftmate25@gmail.com</span>
-                          </div>
-                          <div className="flex items-center gap-4 text-blue-50">
-                             <Phone className="w-5 h-5 text-white shrink-0" />
-                             <span>+91 6360756930</span>
-                          </div>
-                          <div className="flex items-start gap-4 text-blue-50">
-                             <MapPin className="w-5 h-5 text-white shrink-0 mt-0.5" />
-                             <span className="leading-snug break-words">Address: Lodhi Road, South Delhi, New Delhi, India</span>
-                          </div>
-                          <div className="flex items-center gap-4 text-blue-50">
-                             <UserCheck className="w-5 h-5 text-white shrink-0" />
-                             <span>Website: www.draftmate.in</span>
-                          </div>
+                      <div className="space-y-4 relative z-10">
+                        <div className="font-semibold text-white mb-2">DraftMate AI</div>
+                        <div className="flex items-center gap-4 text-slate-300">
+                          <Mail className="w-5 h-5 text-blue-400 shrink-0" />
+                          <span className="break-all">info@draftmate.in</span>
                         </div>
-                        <p className="text-blue-50 text-sm border-t border-white/20 pt-4">For business partnerships, institutional collaborations, investment inquiries, or legal compliance matters, you may contact us using the details provided above.</p>
-                     </div>
+                      </div>
+                      <p className="text-slate-300 text-sm mt-6 relative z-10">We aim to acknowledge complaints within a reasonable period and resolve them in accordance with applicable laws.</p>
+                    </div>
+
+                    {/* 19. Contact Information */}
+                    <div className="p-8 rounded-[32px] bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-lg">
+                      <h3 className="text-xl font-bold mb-6">19. Contact Us</h3>
+                      <p className="text-blue-50 text-sm mb-6">For questions, support requests, legal notices, or grievances regarding these Terms, please contact:</p>
+
+                      <div className="space-y-4 mb-6">
+                        <div className="font-semibold text-white mb-2">DraftMate AI</div>
+                        <div className="flex items-center gap-4 text-blue-50">
+                          <Mail className="w-5 h-5 text-white shrink-0" />
+                          <span className="break-all">info@draftmate.in</span>
+                        </div>
+                        <div className="flex items-center gap-4 text-blue-50">
+                          <Phone className="w-5 h-5 text-white shrink-0" />
+                          <span>+91 6360756930</span>
+                        </div>
+                        <div className="flex items-start gap-4 text-blue-50">
+                          <MapPin className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                          <span className="leading-snug break-words">Address: Lodhi Road, South Delhi, New Delhi, India</span>
+                        </div>
+                        <div className="flex items-center gap-4 text-blue-50">
+                          <UserCheck className="w-5 h-5 text-white shrink-0" />
+                          <span>Website: www.draftmate.in</span>
+                        </div>
+                      </div>
+                      <p className="text-blue-50 text-sm border-t border-white/20 pt-4">For business partnerships, institutional collaborations, investment inquiries, or legal compliance matters, you may contact us using the details provided above.</p>
+                    </div>
                   </div>
                 </ScrollReveal>
 
