@@ -85,13 +85,15 @@ router = APIRouter(
 )
 def search_terms(
     db=Depends(get_db),
-    query: str = Query(..., min_length=1),
+    # query: str = Query(..., min_length=1),
+    query: str = Query("", max_length=20),
     page: int = Query(1, ge=1),
     limit: int = Query(20, ge=1, le=100),
 ):
     return search_terms_controller(
         db=db,
-        query=query,
+        # query=query,
+        query=query.strip(),
         page=page,
         limit=limit,
     )
