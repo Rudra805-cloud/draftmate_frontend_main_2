@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, UniqueConstraint, func
+from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String, UniqueConstraint, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
@@ -20,8 +20,8 @@ class TrackedCase(Base):
         index=True,
     )
 
-    user_id: Mapped[int] = mapped_column(
-        Integer,
+    user_id: Mapped[str] = mapped_column(
+        String(64),
         nullable=False,
         index=True,
     )
