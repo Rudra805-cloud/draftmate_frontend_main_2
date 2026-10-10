@@ -24,7 +24,7 @@ const SIDEBAR_ITEMS = [
   { icon: Languages, label: "Translation", path: "/dashboard/translate" },
   { icon: GraduationCap, label: "Student Center", path: "/dashboard/academy" },
   { icon: UserCircle, label: "Lawyer Profile", path: "/dashboard/profile" },
-  { icon: Landmark, label: "E-Court Services", path: "/dashboard/ecourt" },
+  { icon: Landmark, label: "E-Court Case Search", path: "/dashboard/case-search" },
   { icon: Library, label: "Legal Library", path: "/dashboard/library" },
   { icon: Wrench, label: "Tools", path: "/dashboard/tools" },
 ];
@@ -263,11 +263,14 @@ export default function MainLayout() {
                 <button onClick={() => setMobileMenuOpen(false)} className="p-2 text-slate-400 hover:text-slate-700 bg-slate-50 rounded-full"><X className="w-4 h-4" /></button>
               </div>
               <div className="flex-1 overflow-y-auto py-6 px-4 space-y-1">
-                {SIDEBAR_ITEMS.map((item) => (
-                  <Link key={item.label} to={item.path} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium">
+                {SIDEBAR_ITEMS.map((item) => {
+                  const isActive = location.pathname.includes(item.path);
+                  return (
+                  <Link key={item.label} to={item.path} onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors font-medium ${isActive ? 'bg-blue-50 text-blue-600' : 'text-slate-600 hover:bg-blue-50 hover:text-blue-600'}`}>
                     <item.icon className="w-5 h-5" /> <span className="text-sm">{item.label}</span>
                   </Link>
-                ))}
+                  );
+                })}
               </div>
             </motion.aside>
           </>

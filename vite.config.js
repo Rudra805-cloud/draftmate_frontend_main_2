@@ -42,6 +42,11 @@ export default defineConfig(({ mode }) => {
           target: backendTarget,
           changeOrigin: true,
         },
+        '/ecourts': {
+          target: env.ECOURTS_API_URL || 'http://127.0.0.1:8011',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/ecourts/, ''),
+        },
         '/query': {
           target: backendTarget,
           changeOrigin: true,

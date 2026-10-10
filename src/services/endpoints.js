@@ -128,7 +128,8 @@ export const API_CONFIG = {
 
     // Service: backend/login_db (Port 8009)
     AUTH: {
-        BASE_URL: `${BASE_URL}/auth`,
+        BASE_URL: import.meta.env.VITE_AUTH_API_URL
+            || (import.meta.env.DEV ? 'http://127.0.0.1:8009' : `${BASE_URL}/auth`),
         ENDPOINTS: {
             LOGIN: '/login', // POST
             REGISTER: '/register', // POST
@@ -174,6 +175,26 @@ export const API_CONFIG = {
         ENDPOINTS: {
             SEARCH: '/search', // GET
             DOC: (docId) => `/doc/${docId}`, // GET
+        }
+    },
+
+    // Service: backend/E_court_service (Port 8011) — routed via /ecourts
+    ECOURTS: {
+        BASE_URL: `${BASE_URL}/ecourts`,
+        ENDPOINTS: {
+            // Case lookup & search
+            GET_CASE: (cnr) => `/cases/${cnr}`,          // GET
+            SEARCH_CASES: '/cases/search',               // POST
+            STATES: '/locations/states',
+            DISTRICTS: (state) => `/locations/states/${state}/districts`,
+            COMPLEXES: (state, district) => `/locations/states/${state}/districts/${district}/complexes`,
+            COURTS: (state, district, complex) => `/locations/states/${state}/districts/${district}/complexes/${complex}/courts`,
+
+            // Case tracking (requires Authorization: Bearer <session_id>)
+            LIST_TRACKED: '/tracking',                   // GET
+            TRACK_CASE: (cnr) => `/tracking/${cnr}`,     // POST
+            UNTRACK_CASE: (cnr) => `/tracking/${cnr}`,   // DELETE
+            REFRESH_CASE: (cnr) => `/tracking/${cnr}/refresh`, // POST
         }
     },
 

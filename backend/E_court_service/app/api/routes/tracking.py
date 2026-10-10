@@ -56,7 +56,7 @@ def _tracking_response(tracked: TrackedCase, case: Case) -> dict:
 @router.get("")
 def list_tracked_cases(
     db: Session = Depends(get_db),
-    user_id: int = Depends(get_current_user_id),
+    user_id: str = Depends(get_current_user_id),
 ):
     """Return all active cases tracked by the authenticated user."""
     tracked_cases = (
@@ -76,7 +76,7 @@ def list_tracked_cases(
 async def refresh_tracked_case(
     cnr: str,
     db: Session = Depends(get_db),
-    user_id: int = Depends(get_current_user_id),
+    user_id: str = Depends(get_current_user_id),
 ):
     """Fetch the latest provider data for an already tracked case."""
     tracked_case = (
@@ -114,7 +114,7 @@ async def refresh_tracked_case(
 async def track_case(
     cnr: str,
     db: Session = Depends(get_db),
-    user_id: int = Depends(get_current_user_id),
+    user_id: str = Depends(get_current_user_id),
 ):
     try:
         await case_service.get_case(db, cnr)
@@ -188,7 +188,7 @@ async def track_case(
 def untrack_case(
     cnr: str,
     db: Session = Depends(get_db),
-    user_id: int = Depends(get_current_user_id),
+    user_id: str = Depends(get_current_user_id),
 ):
     case = db.query(Case).filter(Case.cnr == cnr).first()
 
