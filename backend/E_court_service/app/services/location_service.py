@@ -33,23 +33,32 @@ class LocationService:
             for item in provider_response
         ]
 
-    async def get_complexes(self, district_code: str):
-        provider_response = await self.provider.get_complexes(district_code)
+    async def get_complexes(self, state_code: str, district_code: str):
+        provider_response = await self.provider.get_complexes(state_code, district_code)
 
         return [
             ComplexResponse(
-                code=item.get("complexCode"),
-                name=item.get("complexName"),
+                code=item.get("courtComplexCode") or item.get("complexCode"),
+                name=item.get("courtComplexName") or item.get("complexName"),
             )
             for item in provider_response
         ]
 
-    async def get_courts(self, complex_code: str):
-        provider_response = await self.provider.get_courts(complex_code)
+    async def get_courts(
+        self,
+        state_code: str,
+        district_code: str,
+        complex_code: str,
+    ):
+        provider_response = await self.provider.get_courts(
+            state_code,
+            district_code,
+            complex_code,
+        )
 
         return [
             CourtResponse(
-                code=item.get("courtCode"),
+                code=item.get("court") or item.get("courtCode"),
                 name=item.get("courtName"),
             )
             for item in provider_response

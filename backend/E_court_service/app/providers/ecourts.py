@@ -70,10 +70,10 @@ class ECourtsProvider(CourtProvider):
         self._handle_response(response)
         return response.json()
 
-    async def get_complexes(self, district_code: str):
+    async def get_complexes(self, state_code: str, district_code: str):
         async with httpx.AsyncClient() as client:
             response = await client.get(
-                f"{self.base_url}/api/partner/causelist/court-structure/districts/{district_code}/complexes",
+                f"{self.base_url}/api/partner/causelist/court-structure/states/{state_code}/districts/{district_code}/complexes",
                 headers=self.headers,
             )
 
@@ -81,10 +81,15 @@ class ECourtsProvider(CourtProvider):
 
         return response.json()
 
-    async def get_courts(self, complex_code: str):
+    async def get_courts(
+        self,
+        state_code: str,
+        district_code: str,
+        complex_code: str,
+    ):
         async with httpx.AsyncClient() as client:
             response = await client.get(
-                f"{self.base_url}/api/partner/causelist/court-structure/complexes/{complex_code}/courts",
+                f"{self.base_url}/api/partner/causelist/court-structure/states/{state_code}/districts/{district_code}/complexes/{complex_code}/courts",
                 headers=self.headers,
             )
 

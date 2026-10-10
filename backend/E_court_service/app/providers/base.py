@@ -23,9 +23,14 @@ class CourtProvider(ABC):
         pass
 
     @abstractmethod
-    async def get_complexes(self, district_code: str):
+    async def get_complexes(self, state_code: str, district_code: str):
         pass
 
     @abstractmethod
-    async def get_courts(self, complex_code: str):
+    async def get_courts(
+        self,
+        state_code: str,
+        district_code: str,
+        complex_code: str,
+    ):
         pass
