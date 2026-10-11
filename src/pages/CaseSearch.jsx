@@ -110,16 +110,16 @@ const CaseSearch = () => {
 
     const searchCases = async (event) => {
         event.preventDefault();
-        const hasFilter = Object.values(filters).some(Boolean);
-        if (!query.trim() && !hasFilter) {
-            toast.error('Enter a CNR, party name, or choose a filter.');
+        const searchTerm = query.trim();
+        if (!searchTerm) {
+            toast.error('Enter a CNR, case number, or party name before applying filters.');
             return;
         }
         setLoading(true);
         setActiveTab('search');
         try {
             const { data } = await axios.post(`${api.BASE_URL}${api.ENDPOINTS.SEARCH_CASES}`, {
-                query: query.trim() || null,
+                query: searchTerm,
                 ...filters,
                 filing_year: filters.filing_year ? Number(filters.filing_year) : null,
                 page: 1,
@@ -236,12 +236,12 @@ const CaseSearch = () => {
                             <button disabled={loading || Boolean(locationLoading)} className="rounded-xl bg-indigo-600 px-7 py-3 font-bold text-white transition hover:bg-indigo-700 disabled:opacity-60">{loading ? <Spinner /> : 'Search cases'}</button>
                         </div>
                         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                                    <select className={selectClass} value={filters.state_code} onChange={(e) => locationChange('state_code', e.target.value)} disabled={statesLoading || Boolean(locationLoading)}><option value="">{statesLoading ? 'Loading states...' : 'All states'}</option>{states.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}</select>
-                                    <select className={selectClass} value={filters.district_code} onChange={(e) => locationChange('district_code', e.target.value)} disabled={!filters.state_code || Boolean(locationLoading)}><option value="">{locationLoading === 'state_code' ? 'Loading districts...' : 'All districts'}</option>{districts.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}</select>
-                                    <select className={selectClass} value={filters.court_code} onChange={(e) => locationChange('court_code', e.target.value)} disabled={!filters.district_code || Boolean(locationLoading)}><option value="">{locationLoading === 'district_code' ? 'Loading court complexes...' : 'All court complexes'}</option>{complexes.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}</select>
-                            <input className={fieldClass} placeholder="Case type" value={filters.case_type} onChange={(e) => setFilters({ ...filters, case_type: e.target.value })} />
-                            <input className={fieldClass} placeholder="Status (e.g. DISPOSED)" value={filters.case_status} onChange={(e) => setFilters({ ...filters, case_status: e.target.value })} />
-                            <input className={fieldClass} type="number" placeholder="Filing year" value={filters.filing_year} onChange={(e) => setFilters({ ...filters, filing_year: e.target.value })} />
+                                    <select className={selectClass} value={filters.state_code} onChange={(e) => locationChange('state_code', e.target.value)} disabled={!query.trim() || statesLoading || Boolean(locationLoading)}><option value="">{!query.trim() ? 'Enter search first' : statesLoading ? 'Loading states...' : 'All states'}</option>{states.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}</select>
+                                    <select className={selectClass} value={filters.district_code} onChange={(e) => locationChange('district_code', e.target.value)} disabled={!query.trim() || !filters.state_code || Boolean(locationLoading)}><option value="">{!query.trim() ? 'Enter search first' : locationLoading === 'state_code' ? 'Loading districts...' : 'All districts'}</option>{districts.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}</select>
+                                    <select className={selectClass} value={filters.court_code} onChange={(e) => locationChange('court_code', e.target.value)} disabled={!query.trim() || !filters.district_code || Boolean(locationLoading)}><option value="">{!query.trim() ? 'Enter search first' : locationLoading === 'district_code' ? 'Loading court complexes...' : 'All court complexes'}</option>{complexes.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}</select>
+                            <input className={fieldClass} placeholder="Case type" value={filters.case_type} disabled={!query.trim()} onChange={(e) => setFilters({ ...filters, case_type: e.target.value })} />
+                            <input className={fieldClass} placeholder="Status (e.g. DISPOSED)" value={filters.case_status} disabled={!query.trim()} onChange={(e) => setFilters({ ...filters, case_status: e.target.value })} />
+                            <input className={fieldClass} type="number" placeholder="Filing year" value={filters.filing_year} disabled={!query.trim()} onChange={(e) => setFilters({ ...filters, filing_year: e.target.value })} />
                         </div>
                         {courts.length > 0 && <p className="mt-4 text-xs text-slate-500">Available courts: {courts.map((item) => item.name).join(' · ')}</p>}
                     </form>
